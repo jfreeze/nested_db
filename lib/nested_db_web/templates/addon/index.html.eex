@@ -1,0 +1,26 @@
+<h1>Listing Addons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for addon <- @addons do %>
+    <tr>
+      <td><%= addon.name %></td>
+
+      <td>
+        <%= link "Show", to: Routes.addon_path(@conn, :show, addon) %>
+        <%= link "Edit", to: Routes.addon_path(@conn, :edit, addon) %>
+        <%= link "Delete", to: Routes.addon_path(@conn, :delete, addon), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Addon", to: Routes.addon_path(@conn, :new) %></span>

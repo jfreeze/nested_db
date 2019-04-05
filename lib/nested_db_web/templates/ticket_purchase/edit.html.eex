@@ -1,0 +1,5 @@
+<h1>Edit Ticket purchase</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.ticket_purchase_path(@conn, :update, @ticket_purchase)) %>
+
+<span><%= link "Back", to: Routes.ticket_purchase_path(@conn, :index) %></span>

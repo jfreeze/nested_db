@@ -1,0 +1,26 @@
+<h1>Listing Ticket purchases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for ticket_purchase <- @ticket_purchases do %>
+    <tr>
+      <td><%= ticket_purchase.name %></td>
+
+      <td>
+        <%= link "Show", to: Routes.ticket_purchase_path(@conn, :show, ticket_purchase) %>
+        <%= link "Edit", to: Routes.ticket_purchase_path(@conn, :edit, ticket_purchase) %>
+        <%= link "Delete", to: Routes.ticket_purchase_path(@conn, :delete, ticket_purchase), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Ticket purchase", to: Routes.ticket_purchase_path(@conn, :new) %></span>

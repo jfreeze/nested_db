@@ -1,0 +1,13 @@
+<h1>Show Addon</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @addon.name %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.addon_path(@conn, :edit, @addon) %></span>
+<span><%= link "Back", to: Routes.addon_path(@conn, :index) %></span>
