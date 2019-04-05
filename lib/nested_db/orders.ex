@@ -98,8 +98,8 @@ defmodule NestedDb.Orders do
       %Ecto.Changeset{source: %Order{}}
 
   """
-  def change_order(%Order{} = order) do
-    Order.changeset(order, %{})
+  def change_order(attrs) do
+    Order.changeset(%Order{}, attrs)
   end
 
   alias NestedDb.Orders.TicketPurchase
@@ -200,6 +200,34 @@ defmodule NestedDb.Orders do
 
   def test_create_order() do
     attrs = %{
+      "human_id" => "JDFABC",
+      "ticket_purchases" => [
+          %{"name" => "ticket 1",
+            "addons" => [
+              %{"name" => "addon a"},
+              %{"name" => "addon b"}
+            ]
+          },
+          %{"name" => "ticket 2",
+            "addons" => [
+                %{"name" => "addon 1"},
+                %{"name" => "addon 2"}
+            ]
+        }
+      ]
+    }
+
+    # IO.inspect build_assoc(:ticket_purchases, attrs)
+#    order = create_order(attrs)
+#    IO.inspect order
+  end
+  def test1 do
+    test_create_order()
+    |> create_order
+  end
+
+  def test_create_order2() do
+    attrs = %{
       human_id: "JDFABC",
       ticket_purchases: [
           %{name: "ticket 1",
@@ -217,8 +245,10 @@ defmodule NestedDb.Orders do
       ]
     }
 
-    # IO.inspect build_assoc(:ticket_purchases, attrs)
-#    order = create_order(attrs)
-#    IO.inspect order
   end
+  def test2 do
+    test_create_order2()
+    |> create_order
+  end
+
 end

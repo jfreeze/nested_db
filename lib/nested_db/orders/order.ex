@@ -13,6 +13,7 @@ defmodule NestedDb.Orders.Order do
   def changeset(order, attrs) do
     order
     |> cast(attrs, [:human_id])
+    |> cast_assoc(:ticket_purchases)
     |> validate_required([:human_id])
   end
 end

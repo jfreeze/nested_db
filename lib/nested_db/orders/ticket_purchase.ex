@@ -15,6 +15,7 @@ defmodule NestedDb.Orders.TicketPurchase do
   def changeset(ticket_purchase, attrs) do
     ticket_purchase
     |> cast(attrs, [:name])
+    |> cast_assoc(:addons)
     |> validate_required([:name])
   end
 end
